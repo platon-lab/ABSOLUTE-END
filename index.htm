@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platon Games - Подяка</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+        }
+
+        /* Початковий екран */
+        #start-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            transition: opacity 1s ease-in-out;
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background: transparent;
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Екран подяки */
+        #thanks-screen {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            background: url('Fon.png') no-repeat center center/cover;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.75);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .content-box {
+            max-width: 800px;
+            text-align: center;
+            color: #fff;
+            animation: slideUp 1.5s ease-out;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 40px;
+            scrollbar-width: thin;
+            scrollbar-color: #fff transparent;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: #f39c12;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Стилізація скролбару */
+        .content-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .content-box::-webkit-scrollbar-thumb {
+            background: #f39c12;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="start-screen">
+        <button onclick="showThanks()">Натисніть пж</button>
+    </div>
+
+    <div id="thanks-screen">
+        <div class="overlay">
+            <div class="content-box">
+                <h1>ВЕЛИЧЕЗНА ПОДЯКА!</h1>
+                <p>Дорогий гравець! Від імені всієї команди <span class="highlight">Platon Games</span> ми хочемо висловити тобі нашу щиру вдячність за те, що ти приділив свій час нашій грі. Кожен твій клік, кожна секунда, проведена в нашому цифровому світі — це те, що надихає нас рухатися вперед і створювати нові шедеври.</p>
+                
+                <p>Ми віримо, що ігри — це не просто код і пікселі. Це емоції, це виклики та історії, які ми проживаємо разом. Твоя підтримка є фундаментом нашого розвитку. Без тебе не було б Platon Games. Ти — головний герой нашої подорожі, і ми неймовірно раді, що ти став частиною нашої спільноти.</p>
+                
+                <p>Цей проект був створений з великою любов’ю та увагою до деталей. Ми прагнемо до того, щоб кожен наш продукт приносив радість та незабутні враження. Твій вибір на користь Platon Games — це найкраща нагорода для розробника. Обіцяємо, що попереду на тебе чекає ще більше цікавого контенту, неймовірних оновлень та захоплюючих пригод!</p>
+                
+                <p>Дякуємо за твою віру в нас. Дякуємо за те, що ти з нами. Це лише початок великого шляху, і ми щасливі, що йдемо по ньому разом із тобою. Нехай кожен твій день буде наповнений перемогами — як у віртуальному світі, так і в реальному житті!</p>
+                
+                <p style="font-size: 24px; font-weight: bold;">З повагою та любов’ю,<br>Команда <span class="highlight">Platon Games</span>!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showThanks() {
+            const startScreen = document.getElementById('start-screen');
+            const thanksScreen = document.getElementById('thanks-screen');
+
+            startScreen.style.opacity = '0';
+            
+            setTimeout(() => {
+                startScreen.style.display = 'none';
+                thanksScreen.style.display = 'flex';
+                setTimeout(() => {
+                    thanksScreen.style.opacity = '1';
+                }, 100);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
