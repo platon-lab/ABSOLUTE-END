@@ -114,6 +114,24 @@
             background: #f39c12;
             border-radius: 10px;
         }
+
+        /* Стилі для секретного відео */
+        #video-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
@@ -139,6 +157,14 @@
         </div>
     </div>
 
+    <!-- Контейнер для секретного відео -->
+    <div id="video-container">
+        <video id="secret-video">
+            <source src="End.mp4" type="video/mp4">
+            Ваш браузер не підтримує відео.
+        </video>
+    </div>
+
     <script>
         function showThanks() {
             const startScreen = document.getElementById('start-screen');
@@ -154,6 +180,25 @@
                 }, 100);
             }, 1000);
         }
+
+        // Логіка 20 натискань
+        let clickCount = 0;
+        const videoContainer = document.getElementById('video-container');
+        const video = document.getElementById('secret-video');
+
+        window.addEventListener('click', () => {
+            clickCount++;
+            
+            if (clickCount === 20) {
+                videoContainer.style.display = 'block';
+                video.play();
+
+                // Перехід на сайт після завершення відео
+                video.onended = () => {
+                    window.location.href = "https://platon-lab.github.io/666-Anomaly/";
+                };
+            }
+        });
     </script>
 </body>
 </html>
